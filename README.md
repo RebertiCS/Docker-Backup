@@ -1,9 +1,6 @@
 # Docker-Backup
 Simple bash script to backup docker volumes using a list of containers
 
-
-
-
 ## Usage
 ### Python Script:
 Create `.env` file containing:
@@ -32,8 +29,8 @@ BACKUP_PATH="<BACKUP_PATH>"
 sudo systemctl enable docker-backup@production.timer
 ```
 
-### Bash Script
-## Install
+## Bash Script
+### Install
 ``` bash
 curl -O https://raw.githubusercontent.com/RebertiCS/Docker-Backup/refs/heads/main/docker-backup.sh
 chmod +x docker-backup.sh
