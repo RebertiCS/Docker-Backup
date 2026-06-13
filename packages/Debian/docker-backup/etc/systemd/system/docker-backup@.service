@@ -1,0 +1,14 @@
+[Unit]
+Description=Backup Docker Volues
+Requires=network-online.target
+After=network-online.target
+StartLimitBurst=1
+
+[Service]
+Type=oneshot
+Restart=on-failure
+RestartSec=4s
+ExecStart=/usr/bin/docker-backup /etc/docker-backup/%I
+
+[Install]
+WantedBy=multi-user.target
