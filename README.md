@@ -1,6 +1,25 @@
 # Docker-Backup
 Simple bash script to backup docker volumes using a list of containers
 
+## Backup Tree:
+Date time formats are in ISO (8096) format: (yyyy-mm-dd_hhmmss)
+```
+`-- random_backup_folder
+    |-- postgresql-1
+    |   |-- database-2026-06-13_211757.tar.xz
+    |   |-- database-2026-06-15_000119.tar.xz
+    |   `-- database-2026-06-16_000117.tar.xz
+    |-- dashboard-db
+    |   |-- database-2026-06-13_211702.tar.xz
+    |   |-- database-2026-06-15_000004.tar.xz
+    |   `-- database-2026-06-16_000006.tar.xz
+    `-- something
+        |-- something_something-data-2026-06-15_000154.tar.xz
+        |-- something_something-data-2026-06-16_000153.tar.xz
+        |-- something_something-ssl-2026-06-15_000154.tar.xz
+        `-- something_something-ssl-2026-06-16_000153.tar.xz
+```
+
 ## Usage
 ### Python Script:
 Create `.env` file containing:

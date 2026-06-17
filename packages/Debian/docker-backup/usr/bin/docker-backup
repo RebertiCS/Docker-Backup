@@ -41,6 +41,12 @@ def create_backup(container):
 
     volume_list = get_volumes(container)
 
+    # Stop container
+    subprocess.run(["docker", "stop", f"{container}"])
+
+    # Make backup dir
+    subprocess.run(["mkdir", "-p", f"{backup_dir}/{container}"])
+
     for volume_path in volume_list:
         volume_name = re.split("/", volume_path)[-2]
 
@@ -53,17 +59,11 @@ def create_backup(container):
             "."
         ]
 
-        # Make backup dir
-        subprocess.run(["mkdir", "-p", f"{backup_dir}/{container}"])
-
-        # Stop container
-        subprocess.run(["docker", "stop", f"{container}"])
-
         # Run backup
         subprocess.run(command)
 
-        # Start container
-        subprocess.run(["docker", "start", f"{container}"])
+    # Start container
+    subprocess.run(["docker", "start", f"{container}"])
 
 
 def get_volumes(container):
