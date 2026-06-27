@@ -41,15 +41,18 @@ def create_backup(container):
 
     volume_list = get_volumes(container)
 
-    # Stop container
-    subprocess.run(["docker", "stop", f"{container}"])
-
     # Make backup dir
+    print(f"Creating backup dir for {container}.")
     subprocess.run(["mkdir", "-p", f"{backup_dir}/{container}"])
+
+    # Stop container
+    print(f"Stopping container {container}.")
+    subprocess.run(["docker", "stop", f"{container}"])
 
     for volume_path in volume_list:
         volume_name = re.split("/", volume_path)[-2]
 
+        print(f"Creating backup:\n -Name: {volume_name}\n - Path: {volume_path}\n - Dest: {backup_dir}/{container}/{volume_name}-{date_str}.tar.xz")
         command = [
             "tar",
             "-Jcf",
@@ -63,6 +66,7 @@ def create_backup(container):
         subprocess.run(command)
 
     # Start container
+    print(f"Starting container {container}.")
     subprocess.run(["docker", "start", f"{container}"])
 
 
@@ -88,9 +92,6 @@ def get_volumes(container):
     )
 
     return volume_list
-
-
-
 
 
 if __name__ == "__main__":
