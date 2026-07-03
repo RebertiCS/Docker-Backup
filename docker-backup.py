@@ -73,7 +73,7 @@ def create_backup(container):
 
     # Start container
     print(f"Starting container {container}.")
-    subprocess.run(["docker", "start", f"{container}"]
+    subprocess.run(["docker", "start", f"{container}"],
                    capture_output=True,
                    text=True)
 
