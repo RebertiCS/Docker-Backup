@@ -43,13 +43,13 @@ def create_backup(container):
 
     # Make backup dir
     print(f"Creating backup dir for {container}.")
-    subprocess.run(["mkdir", "-p", f"{backup_dir}/{container}"]
+    subprocess.run(["mkdir", "-p", f"{backup_dir}/{container}"],
                    capture_output=True,
                    text=True)
 
     # Stop container
     print(f"Stopping container {container}.")
-    subprocess.run(["docker", "stop", f"{container}"]
+    subprocess.run(["docker", "stop", f"{container}"],
                    capture_output=True,
                    text=True)
 
