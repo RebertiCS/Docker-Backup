@@ -4,6 +4,8 @@ import os
 import re
 import sys
 import subprocess
+
+from time import process_time
 from datetime import datetime
 
 from dotenv import load_dotenv
@@ -38,17 +40,16 @@ def create_backup(container):
         raise
 
     date_str = datetime.now().strftime('%Y-%m-%d_%H%M%S')
+    start_time = process_time()
 
     volume_list = get_volumes(container)
 
     # Make backup dir
-    print(f"Creating backup dir for {container}.")
+    print(f"Creating backup directory for {container}.")
     subprocess.run(["mkdir", "-p", f"{backup_dir}/{container}"],
                    capture_output=True,
                    text=True)
 
-    # Stop container
-    print(f"Stopping container {container}.")
     subprocess.run(["docker", "stop", f"{container}"],
                    capture_output=True,
                    text=True)
@@ -56,7 +57,8 @@ def create_backup(container):
     for volume_path in volume_list:
         volume_name = re.split("/", volume_path)[-2]
 
-        print(f"Creating backup:\n -Name: {volume_name}\n - Path: {volume_path}\n - Dest: {backup_dir}/{container}/{volume_name}-{date_str}.tar.xz")
+        print(f"Creating backup:\n - Name: {volume_name}\n - Path: {volume_path}\n - Dest: {backup_dir}/{container}/{volume_name}-{date_str}.tar.xz")
+
         command = [
             "tar",
             "-Jcf",
@@ -72,10 +74,13 @@ def create_backup(container):
                        text=True)
 
     # Start container
-    print(f"Starting container {container}.")
     subprocess.run(["docker", "start", f"{container}"],
                    capture_output=True,
                    text=True)
+
+    total_time = round((process_time() - start_time) * 1000, 2)
+    print(f" - Runtime: {total_time}s")
+
 
 
 def get_volumes(container):

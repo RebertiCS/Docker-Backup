@@ -2,3 +2,4 @@
 **/**/*.deb
 tests
 dboard-backup
+packages/Debian/docker-backup/usr/bin/docker-backup
