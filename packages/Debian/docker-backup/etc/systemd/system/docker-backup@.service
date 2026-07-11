@@ -8,7 +8,7 @@ StartLimitBurst=1
 Type=oneshot
 Restart=on-failure
 RestartSec=4s
-ExecStart=/usr/bin/docker-backup /etc/docker-backup/%I
+ExecStart=/usr/bin/docker-backup /etc/docker-backup/%I.conf
 
 [Install]
 WantedBy=multi-user.target

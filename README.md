@@ -19,10 +19,21 @@ Date time formats are in ISO (8096) format: (yyyy-mm-dd_hhmmss)
         |-- something_something-ssl-2026-06-15_000154.tar.xz
         `-- something_something-ssl-2026-06-16_000153.tar.xz
 ```
+## Install
+---
+### Debian:
+
+``` bash
+wget <LATEST_GITLAB_RELEASE>.deb
+sudo dkpg -i <LATEST_GITLAB_RELEASE>.deb
+# or
+sudo apt install -f ./<LATEST_GITLAB_RELEASE>.deb
+```
 
 ## Usage
+
 ### Python Script:
-Create `.env` file containing:
+Create `prod.conf` file containing:
 
 ```bash
 CONTAINER_LIST="CONTAINER_A CONTAINER_B CONTAINER_C"
@@ -35,7 +46,7 @@ chmod +x deenesse
 ./deenesse [configuration]
 ```
 
-## Systemd
+#### Systemd
 Create `/etc/docker-backup/production.conf` file containing:
 
 ```bash

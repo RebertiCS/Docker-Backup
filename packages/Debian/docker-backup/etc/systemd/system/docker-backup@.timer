@@ -1,9 +1,9 @@
 [Unit]
-Description=Daily Docker Volue Backup
+Description=Weekly Docker Volue Backup
 
 [Timer]
 Unit=docker-backup@%i.service
-OnCalendar=daily
+OnCalendar=weekly
 AccuracySec=12h
 Persistent=true
 
