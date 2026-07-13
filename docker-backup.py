@@ -22,6 +22,12 @@ def main():
     except KeyError:
         print("Missing CONTAINER_LIST enviromental variable")
         raise
+    except AttributeError:
+        print(f"File {sys.argv[1]} doenst exist, check systemd configuration.")
+        raise
+    except Exception as err:
+        print(f"Unhandled error, exiting:\n - Error:\n {err}")
+        raise
 
     for container in container_list:
         create_backup(container)
