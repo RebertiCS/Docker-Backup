@@ -87,5 +87,5 @@ rsync -ave ssh <user>@<server_ip>:~/<docker backup> <DEST>/docker-backup
 ### Crontab
 Runs everyday at 01:00
 ``` bash
-1 0 * * * /usr/bin/rsync -ave ssh <user>@<server_ip>:~/<docker backup> <DEST>/docker-backup
+0 1 * * * /usr/bin/rsync -aue ssh <user>@<server_ip>:~/<docker backup> <DEST>/docker-backup
 ```
