@@ -72,8 +72,20 @@ bash dboard-backup.sh ./container_list.txt /backup/volumes/
 ```
 
 #### Crontab
-Runs everyday at 12 PM
+Runs everyday at 00:00
 ``` bash
 0 0 * * * /usr/bin/bash /root/dboard-backup.sh /root/container_list.txt /home/rebertics/backups/ag_00/volumes/
 ```
 
+## Backup of the backups:
+---
+Some examples on how to backup:
+``` bash
+rsync -ave ssh <user>@<server_ip>:~/<docker backup> <DEST>/docker-backup
+```
+
+### Crontab
+Runs everyday at 01:00
+``` bash
+1 0 * * * /usr/bin/rsync -ave ssh <user>@<server_ip>:~/<docker backup> <DEST>/docker-backup
+```
