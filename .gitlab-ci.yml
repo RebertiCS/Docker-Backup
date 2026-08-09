@@ -9,7 +9,7 @@ debian:
     pull_policy: if-not-present
   artifacts:
     when: always
-    paths: [ packages/Debian/docker-backup.deb ]
+    paths: [ docker-backup.deb ]
   # before_script:
   #   - apk add curl
   script:
