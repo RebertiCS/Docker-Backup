@@ -13,11 +13,11 @@ debian:
   # before_script:
   #   - apk add curl
   script:
-    - ls
     - mkdir -p packages/Debian/docker-backup/usr/bin
     - mv docker-backup.py packages/Debian/docker-backup/usr/bin/docker-backup
+    - echo "Setting Permissions"
     - chmod +x packages/Debian/docker-backup/usr/bin/docker-backup
-    - cd packages/Debian/ && echo $PWD
-    - chmod 755 docker-backup/DEBIAN -R
-    - dpkg-deb --root-owner-group --build docker-backup
+    - chmod 755 packages/Debian/docker-backup/DEBIAN -R
+    - echo "Creating Deb Package"
+    - dpkg-deb --root-owner-group --build packages/Debian/docker-backup docker-backup.deb
 
