@@ -17,6 +17,7 @@ debian:
     - mkdir -p packages/Debian/docker-backup/usr/bin
     - mv docker-backup.py packages/Debian/docker-backup/usr/bin/docker-backup
     - chmod +x packages/Debian/docker-backup/usr/bin/docker-backup
-    - cd packages/Debian/
+    - cd packages/Debian/ && echo $PWD
+    - chmod 755 docker-backup/DEBIAN -R
     - dpkg-deb --root-owner-group --build docker-backup
 
