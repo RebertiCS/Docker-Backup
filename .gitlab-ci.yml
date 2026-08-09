@@ -13,8 +13,8 @@ debian:
   # before_script:
   #   - apk add curl
   script:
-    - cp docker-backup.py ./packages/Debian/docker-backup/usr/bin/docker-backup
-    - chmod +x ./packages/Debian/docker-backup/usr/bin/docker-backup
-    - cd ./packages/Debian/
+    - cp docker-backup.py packages/Debian/docker-backup/usr/bin/docker-backup
+    - chmod +x packages/Debian/docker-backup/usr/bin/docker-backup
+    - cd packages/Debian/
     - dpkg-deb --root-owner-group --build docker-backup
 
