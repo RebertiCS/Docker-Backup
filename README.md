@@ -1,6 +1,8 @@
 # Docker-Backup
 Simple bash script to backup docker volumes using a list of containers
 
+![pylint]()
+
 ## Backup Tree:
 Date time formats are in ISO (8096) format: (yyyy-mm-dd_hhmmss)
 ```
