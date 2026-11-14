@@ -1,7 +1,7 @@
 Package: Docker-Backup
 Version: 1.7
 Architecture: amd64
-Depends:  python3-dotenv
+Depends:  python3-dotenv, python3-boto3
 Maintainer: Reberti Carvalho Soares <rebertics@gmail.com>
 Description: Docker Volume Backup Service
 Homepage: https://github.com/RebertiCS/Docker-Backup

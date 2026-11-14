@@ -54,6 +54,15 @@ Create `/etc/docker-backup/production.conf` file containing:
 ```bash
 CONTAINER_LIST="CONTAINER_A CONTAINER_B CONTAINER_C"
 BACKUP_PATH="<BACKUP_PATH>"
+
+# S3 Upload (optional)
+S3_ENABLED="<true|false"
+S3_BUCKET="<BUCKET_NAME>"
+S3_PATH="<UPLOAD PATH PREFIX>"
+S3_KEY="<Access Key>"
+S3_SECRET_KEY="<Secret Key>"
+S3_REGION="<us-east-1>" # S3 Region
+S3_ENDPOINT="<http://example:3900>" # IP or FQDN
 ```
 
 #### Enable Timer
