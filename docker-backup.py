@@ -132,7 +132,7 @@ def create_backup(container):
         try:
             volume_name = re.split("/", volume_path)[-2]
         except:
-            print(f"desc='empty vol, skiping' name={volume_name} path={volume_path}")
+            print(f"desc='empty vol, skiping' path={volume_path}")
             continue
 
         print(f"desc='Creating backup' name={volume_name} path={volume_path} dest='{backup_dir}/{container}/{volume_name}-{date_str}.tar.xz'")
