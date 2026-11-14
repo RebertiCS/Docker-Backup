@@ -12,8 +12,9 @@ from dotenv import load_dotenv
 
 
 BAD_PATH = [
-    "/var/run",
-    "/dev",
+    "/var/run/docker.sock",
+    "/etc/localtime",
+    "/etc/timezone",
 ]
 
 
@@ -130,10 +131,13 @@ def create_backup(container):
 
     for volume_path in volume_list:
         try:
-            volume_name = re.split("/", volume_path)[-2]
+            volume_name = re.split("/", volume_path)[-1]
         except:
             print(f"desc='empty vol, skiping' path={volume_path}")
             continue
+
+        if volume_name == "_data":
+            volume_name = re.split("/", volume_path)[-2]
 
         print(f"desc='Creating backup' name={volume_name} path={volume_path} dest='{backup_dir}/{container}/{volume_name}-{date_str}.tar.xz'")
 
