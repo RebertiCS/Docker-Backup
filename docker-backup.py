@@ -95,7 +95,8 @@ def upload_s3(client, backup_list=[]) -> bool:
         print(f"desc=uploading to s3 file={backup_name} path={backup_path}")
 
         try:
-            client.upload_file(file, bucket, f"{backup_path}/{backup_name}")
+            client.upload_file(file, bucket, f"{backup_path}/{backup_name}",
+                               ExtraArgs={'ContentType': 'application/x-tar'})
         except:
             return False
 
